@@ -1,3 +1,3 @@
-coda.pmf <- function() {
-  "Test"
+coda.pmf <- function(variable.data) {
+  freq(variable.data)
 }

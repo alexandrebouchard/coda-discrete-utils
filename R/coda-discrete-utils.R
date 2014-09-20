@@ -3,6 +3,7 @@ coda.pmf <- function(coda.output) {
   
   for (col.name in colnames(my.matrix)) 
   {
+    print('plotting')
     my.freq <- freq(variable.data, plot=FALSE)
     number.rows <- dim(my.freq)[1]
     my.freq <- my.freq[-number.rows,]

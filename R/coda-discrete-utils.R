@@ -12,7 +12,7 @@ coda.pmf <- function(jags.output) {
     x.values <- as.numeric(row.names(my.freq))
     y.values <- my.freq[,2]/100
     max.y <- max(y.values)
-    plot(x.values,y.values,type="h",xlab="k",ylab=paste("Approximation of P(",col.name,"= k)",sep=""),main=NULL,ylim=c(0,max.y)) 
+    plot(x.values,y.values,type="h",xlab="k",ylab=paste("Approximation of P(",variable.name,"= k)",sep=""),main=NULL,ylim=c(0,max.y)) 
     title("Probability Mass Function (PMF)")
     garbage <- dev.off();
   }
@@ -29,7 +29,7 @@ coda.cdf <- function(jags.output) {
     pdf(paste(variable.name,"-cdf.pdf",sep=""))
     colnames(mycdf) <- NULL 
     rownames(mycdf) <- NULL
-    plot(mycdf,xlab="k",ylab=paste("Approximation of P(",col.name,"<= k)",sep=""),main=NULL)
+    plot(mycdf,xlab="k",ylab=paste("Approximation of P(",variable.name,"<= k)",sep=""),main=NULL)
     title("Cumulative Distribution Function (CDF)")
     garbage <- dev.off();
   }

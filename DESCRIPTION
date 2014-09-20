@@ -1,4 +1,4 @@
-Package: coda-discrete-utils
+Package: coda.discrete.utils
 Type: Package
 Title: Plots PMF and CDF from coda
 Version: 1.0

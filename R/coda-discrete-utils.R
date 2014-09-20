@@ -18,3 +18,20 @@ coda.pmf <- function(jags.output) {
   }
 }
 
+coda.cdf <- function(jags.output) {
+  
+  for (variable.name in names(jags.output)) 
+  {
+    coda.output <- as.mcmc.list(dice.samples[[variable.name]])
+    my.matrix <- as.matrix(coda.output)
+    variable.data <- my.matrix[,1]
+    mycdf <- ecdf(variable.data)
+    pdf(paste(variable.name,"-cdf.pdf",sep=""))
+    colnames(mycdf) <- NULL 
+    rownames(mycdf) <- NULL
+    plot(mycdf,xlab="k",ylab=paste("Approximation of P(",col.name,"<= k)",sep=""),main=NULL)
+    title("Cumulative Distribution Function (CDF)")
+    garbage <- dev.off();
+  }
+}
+

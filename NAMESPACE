@@ -1,3 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 
 importFrom(descr,freq)
+importFrom(rjags,as.mcmc.list)

@@ -1,9 +1,10 @@
-coda.pmf <- function(coda.output) {
-  my.matrix <- as.matrix(coda.output)
-  print(my.matrix)
-  for (col.name in colnames(my.matrix)) 
+coda.pmf <- function(jags.output) {
+  
+  for (variable.name in names(jags.output)) 
   {
-    variable.data <- my.matrix[,col.name]
+    coda.output <- as.mcmc.list(dice.samples[[variable.name]])
+    my.matrix <- as.matrix(coda.output)
+    variable.data <- my.matrix[,1]
     my.freq <- freq(variable.data, plot=FALSE)
     number.rows <- dim(my.freq)[1]
     my.freq <- my.freq[-number.rows,]

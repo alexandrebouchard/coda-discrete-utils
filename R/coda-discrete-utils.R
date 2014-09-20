@@ -1,5 +1,5 @@
 coda.pmf <- function(coda.output) {
-  my.matrix <- as.matrix(mcmc.output)
+  my.matrix <- as.matrix(coda.output)
   
   for (col.name in colnames(my.matrix)) 
   {

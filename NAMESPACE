@@ -1,3 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 
 importFrom(descr,freq)
+importFrom(coda,as.matrix)

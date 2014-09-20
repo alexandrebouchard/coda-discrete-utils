@@ -1,1 +1,3 @@
-"Test - loaded R file"
+coda.pmf <- function() {
+  "Test"
+}

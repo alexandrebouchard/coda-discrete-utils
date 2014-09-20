@@ -1,9 +1,9 @@
 coda.pmf <- function(coda.output) {
   my.matrix <- as.matrix(coda.output)
-  
+  print(my.matrix)
   for (col.name in colnames(my.matrix)) 
   {
-    print('plotting')
+
     my.freq <- freq(variable.data, plot=FALSE)
     number.rows <- dim(my.freq)[1]
     my.freq <- my.freq[-number.rows,]

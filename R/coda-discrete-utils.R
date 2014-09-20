@@ -6,7 +6,7 @@ coda.pmf <- function(coda.output) {
     my.freq <- freq(variable.data, plot=FALSE)
     number.rows <- dim(my.freq)[1]
     my.freq <- my.freq[-number.rows,]
-    pdf(paste(col.name,"-pmf.pdf",sep=""))
+    #pdf(paste(col.name,"-pmf.pdf",sep=""))
     x.values <- as.numeric(row.names(my.freq))
     y.values <- my.freq[,2]/100
     max.y <- max(y.values)

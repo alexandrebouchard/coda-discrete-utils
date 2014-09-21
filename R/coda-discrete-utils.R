@@ -1,3 +1,7 @@
+#' Plot an approximate PMF (probability mass function) from the output of rjags on
+#' a discrete model.
+#' 
+#' @param jags.output The output of jags.sample.
 coda.pmf <- function(jags.output) {
   
   for (variable.name in names(jags.output)) 
@@ -18,6 +22,10 @@ coda.pmf <- function(jags.output) {
   }
 }
 
+#' Plot an approximate CDF (cumulative distribution function) from the output of rjags on
+#' a discrete model.
+#' 
+#' @param jags.output The output of jags.sample.
 coda.cdf <- function(jags.output) {
   
   for (variable.name in names(jags.output)) 

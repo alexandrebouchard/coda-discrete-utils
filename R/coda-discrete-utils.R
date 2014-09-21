@@ -6,7 +6,7 @@ coda.pmf <- function(jags.output) {
   
   for (variable.name in names(jags.output)) 
   {
-    coda.output <- as.mcmc.list(dice.samples[[variable.name]])
+    coda.output <- as.mcmc.list(jags.output[[variable.name]])
     my.matrix <- as.matrix(coda.output)
     variable.data <- my.matrix[,1]
     my.freq <- freq(variable.data, plot=FALSE)
@@ -30,7 +30,7 @@ coda.cdf <- function(jags.output) {
   
   for (variable.name in names(jags.output)) 
   {
-    coda.output <- as.mcmc.list(dice.samples[[variable.name]])
+    coda.output <- as.mcmc.list(jags.output[[variable.name]])
     my.matrix <- as.matrix(coda.output)
     variable.data <- my.matrix[,1]
     mycdf <- ecdf(variable.data)

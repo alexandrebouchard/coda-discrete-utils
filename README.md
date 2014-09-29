@@ -22,18 +22,18 @@ Let's say you have a model like that (``dice-model.bugs``):
 
 ```r
 model {
-  # Here we define 'face\_probabilities', a vector, 
-  # where for example face\_probabilities[2] represents the probability to get a 2 on the dice.
-  face\_probabilities[1] <- 1/6
-  face\_probabilities[2] <- 1/6
-  face\_probabilities[3] <- 1/6
-  face\_probabilities[4] <- 1/6
-  face\_probabilities[5] <- 1/6
-  face\_probabilities[6] <- 1/6
+  # Here we define 'face_probabilities', a vector, 
+  # where for example face_probabilities[2] represents the probability to get a 2 on the dice.
+  face_probabilities[1] <- 1/6
+  face_probabilities[2] <- 1/6
+  face_probabilities[3] <- 1/6
+  face_probabilities[4] <- 1/6
+  face_probabilities[5] <- 1/6
+  face_probabilities[6] <- 1/6
 
-  # Here we define two independent dice, D1 and D2, with the probability of each face given by face\_probabilities
-  D1 ~ dcat(face\_probabilities)
-  D2 ~ dcat(face\_probabilities)
+  # Here we define two independent dice, D1 and D2, with the probability of each face given by face_probabilities
+  D1 ~ dcat(face_probabilities)
+  D2 ~ dcat(face_probabilities)
   
   # Finally, we construct a third random variable S by adding the two independent dice.
   S <- D1 + D2

@@ -57,11 +57,11 @@ coda.expectation <- function(jags.output)
     variable.data <- my.matrix[,1]
     result[[variable.name]] <- mean(variable.data)
   }
-  result
+  (result)
 }
 
 #' Output the variance of all the variables from the output of jags.samples
-#'(not necessarily on a discrete model)
+#' (not necessarily on a discrete model)
 #' 
 #' @param jags.output The output of jags.samples
 coda.variance <- function(jags.output) 
@@ -74,6 +74,6 @@ coda.variance <- function(jags.output)
     variable.data <- my.matrix[,1]
     result[[variable.name]] <- var(variable.data)
   }
-  result
+  (result)
 }
 

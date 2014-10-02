@@ -2,6 +2,7 @@
 #' ran a discrete model.
 #' 
 #' @param jags.output The output of jags.samples ran on a discrete model
+#' @param show.table Whether a table should be printed to standard out as well.
 coda.pmf <- function(jags.output, show.table = FALSE) 
 { 
   for (variable.name in names(jags.output)) 
@@ -26,6 +27,7 @@ coda.pmf <- function(jags.output, show.table = FALSE)
       m <- cbind(x.values, y.values)
       colnames(m) <- c("k", y.label)
       print.matrix(m)
+      cat("\n")
     }
   }
 }
@@ -34,7 +36,8 @@ coda.pmf <- function(jags.output, show.table = FALSE)
 #' ran a discrete model.
 #' 
 #' @param jags.output The output of jags.samples ran a discrete model.
-coda.cdf <- function(jags.output) 
+#' @param show.table Whether a table should be printed to standard out as well.
+coda.cdf <- function(jags.output, show.table = FALSE) 
 {  
   for (variable.name in names(jags.output)) 
   {
@@ -45,9 +48,18 @@ coda.cdf <- function(jags.output)
     pdf(paste(variable.name,"-cdf.pdf",sep=""))
     colnames(mycdf) <- NULL 
     rownames(mycdf) <- NULL
-    plot(mycdf,xlab="k",ylab=paste("Approximation of P(",variable.name,"<= k)",sep=""),main=NULL)
+    y.label <- paste("Approximation of P(",variable.name," <= k)",sep="")
+    plot(mycdf,xlab="k", ylab = y.label, main = NULL)
     title("Cumulative Distribution Function (CDF)")
     garbage <- dev.off();
+    
+    if (show.table)
+    {
+      m <- mycdf
+      colnames(m) <- c("k", y.label)
+      print.matrix(m)
+      cat("\n")
+    }
   }
 }
 

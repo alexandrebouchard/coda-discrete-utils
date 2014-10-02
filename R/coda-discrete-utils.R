@@ -24,8 +24,8 @@ coda.pmf <- function(jags.output, show.table = FALSE)
     if (show.table)
     {
       m <- matrix(nrow = number.rows, ncol = 2)
-      m[,1] <- x.values
-      m[,2] <- y.values
+      m[,1] <- t(x.values)
+      m[,2] <- t(y.values)
       names(m) <- c("k", y.label)
       print.matrix(m)
     }

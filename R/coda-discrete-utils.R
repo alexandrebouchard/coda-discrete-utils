@@ -55,9 +55,8 @@ coda.cdf <- function(jags.output, show.table = FALSE)
     
     if (show.table)
     {
-      m <- mycdf
-      cat(dim(m))
-      #colnames(m) <- c("k", y.label)
+      m <- cbind(mycdf$x, mycdf$y)
+      colnames(m) <- c("k", y.label)
       print.matrix(m)
       cat("\n")
     }

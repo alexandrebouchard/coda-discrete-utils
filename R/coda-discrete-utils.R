@@ -2,7 +2,7 @@
 #' ran a discrete model.
 #' 
 #' @param jags.output The output of jags.samples ran on a discrete model
-coda.pmf <- function(jags.output) 
+coda.pmf <- function(jags.output, show.table = FALSE) 
 { 
   for (variable.name in names(jags.output)) 
   {
@@ -16,9 +16,19 @@ coda.pmf <- function(jags.output)
     x.values <- as.numeric(row.names(my.freq))
     y.values <- my.freq[,2]/100
     max.y <- max(y.values)
-    plot(x.values,y.values,type="h",xlab="k",ylab=paste("Approximation of P(",variable.name,"= k)",sep=""),main=NULL,ylim=c(0,max.y)) 
+    y.label <- paste("Approximation of P(",variable.name,"= k)",sep="")
+    plot(x.values,y.values,type="h",xlab="k",ylab=y.label,main=NULL,ylim=c(0,max.y)) 
     title("Probability Mass Function (PMF)")
     garbage <- dev.off();
+    
+    if (show.table)
+    {
+      m <- matrix(nrow = number.rows, ncol = 2)
+      m[,1] <- x.values
+      m[,2] <- y.values
+      names(m) <- c("k", y.label)
+      print.matrix(m)
+    }
   }
 }
 
@@ -77,3 +87,9 @@ coda.variance <- function(jags.output)
   return(result)
 }
 
+
+print.matrix <- function(m)
+{
+  write.table(format(m, justify="right"),
+              row.names=F, col.names=T, quote=F)
+}

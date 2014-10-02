@@ -55,7 +55,11 @@ coda.cdf <- function(jags.output, show.table = FALSE)
     
     if (show.table)
     {
-      m <- cbind(mycdf$x, mycdf$y)
+      my.freq <- freq(variable.data, plot=FALSE)
+      number.rows <- dim(my.freq)[1]
+      my.freq <- my.freq[-number.rows,]
+      x.values <- as.numeric(row.names(my.freq))
+      m <- cbind(x.values, mycdf(x.values))
       colnames(m) <- c("k", y.label)
       print.matrix(m)
       cat("\n")

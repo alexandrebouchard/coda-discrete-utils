@@ -1,7 +1,7 @@
-#' Plot an approximate PMF (probability mass function) from an mcmc.list coming
-#' from a discrete model.
+#' Plot an approximate PMF (probability mass function) from the output of jags.samples
+#' ran a discrete model.
 #' 
-#' @param jags.output An mcmc.list coming from a discrete model.
+#' @param jags.output The output of jags.samples ran on a discrete model
 coda.pmf <- function(jags.output) 
 { 
   for (variable.name in names(jags.output)) 
@@ -22,10 +22,10 @@ coda.pmf <- function(jags.output)
   }
 }
 
-#' Plot an approximate CDF (cumulative distribution function) from an mcmc.list coming
-#' from a discrete model.
+#' Plot an approximate CDF (cumulative distribution function) from the output of jags.samples
+#' ran a discrete model.
 #' 
-#' @param jags.output An mcmc.list coming from a discrete model.
+#' @param jags.output The output of jags.samples ran a discrete model.
 coda.cdf <- function(jags.output) 
 {  
   for (variable.name in names(jags.output)) 
@@ -43,9 +43,10 @@ coda.cdf <- function(jags.output)
   }
 }
 
-#' Output the expectation of all the variables in an mcmc.list 
+#' Output the expectation of all the variables from the output of jags.samples
+#' (not necessarily on a discrete model)
 #' 
-#' @param jags.output An mcmc.list
+#' @param jags.output The output of jags.samples
 coda.expectation <- function(jags.output) 
 {  
   result <- c()
@@ -56,12 +57,13 @@ coda.expectation <- function(jags.output)
     variable.data <- my.matrix[,1]
     result[[variable.name]] <- mean(variable.data)
   }
-  return(result)
+  result
 }
 
-#' Output the variance of all the variables in an mcmc.list 
+#' Output the variance of all the variables from the output of jags.samples
+#'(not necessarily on a discrete model)
 #' 
-#' @param jags.output An mcmc.list
+#' @param jags.output The output of jags.samples
 coda.variance <- function(jags.output) 
 {  
   result <- c()
@@ -72,6 +74,6 @@ coda.variance <- function(jags.output)
     variable.data <- my.matrix[,1]
     result[[variable.name]] <- var(variable.data)
   }
-  return(result)
+  result
 }
 

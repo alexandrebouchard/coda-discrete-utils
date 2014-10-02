@@ -32,10 +32,9 @@ coda.pmf <- function(jags.output, show.table = FALSE)
   }
 }
 
-#' Plot an approximate CDF (cumulative distribution function) from the output of jags.samples
-#' ran a discrete model.
+#' Plot an approximate CDF (cumulative distribution function) from the output of jags.samples.
 #' 
-#' @param jags.output The output of jags.samples ran a discrete model.
+#' @param jags.output The output of jags.samples.
 #' @param show.table Whether a table should be printed to standard out as well.
 coda.cdf <- function(jags.output, show.table = FALSE) 
 {  
@@ -67,10 +66,9 @@ coda.cdf <- function(jags.output, show.table = FALSE)
   }
 }
 
-#' Output the expectation of all the variables from the output of jags.samples
-#' (not necessarily on a discrete model)
+#' Output the expectation of all the variables from the output of jags.samples.
 #' 
-#' @param jags.output The output of jags.samples
+#' @param jags.output The output of jags.samples.
 coda.expectation <- function(jags.output) 
 {  
   result <- c()
@@ -84,10 +82,9 @@ coda.expectation <- function(jags.output)
   return(result)
 }
 
-#' Output the variance of all the variables from the output of jags.samples
-#' (not necessarily on a discrete model)
+#' Output the variance of all the variables from the output of jags.samples.
 #' 
-#' @param jags.output The output of jags.samples
+#' @param jags.output The output of jags.samples.
 coda.variance <- function(jags.output) 
 {  
   result <- c()

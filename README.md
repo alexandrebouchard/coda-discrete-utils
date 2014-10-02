@@ -1,7 +1,7 @@
 
 # Coda Discrete Utils
 
-Utility to plot a PMF and CDF from the output of JAGS/BUGS (i.e. coda files).
+Utility to plot a PMF and CDF from the output of JAGS/BUGS (i.e. coda files). Note that the 'Discrete' part of the name is from historical reasons: many of the utilily functions in this package are actually applicable to continuous random variables as well.
 
 
 Installation
@@ -59,6 +59,13 @@ coda.pmf(dice.samples)
 
 # Same for CDF
 coda.cdf(dice.samples)
+```
+
+Note that you can also print the tables used to create the plots with the option ``show.table = TRUE``:
+
+```r
+coda.pmf(dice.samples, show.table = TRUE)``
+coda.cdf(dice.samples, show.table = TRUE)``
 ```
 
 As an additional utility, you can also approximate the expectation and variance of random variables sampled by JAGS (not necessarily discrete in this case) using:

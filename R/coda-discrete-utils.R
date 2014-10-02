@@ -100,6 +100,5 @@ coda.variance <- function(jags.output)
 
 print.matrix <- function(m)
 {
-  write.table(m,
-              row.names=F, col.names=T, quote=F)
+  write.table(m, row.names=F, col.names=T, quote=F)
 }

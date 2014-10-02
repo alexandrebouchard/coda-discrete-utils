@@ -16,17 +16,15 @@ coda.pmf <- function(jags.output, show.table = FALSE)
     x.values <- as.numeric(row.names(my.freq))
     y.values <- my.freq[,2]/100
     max.y <- max(y.values)
-    y.label <- paste("Approximation of P(",variable.name,"= k)",sep="")
+    y.label <- paste("Approximation of P(",variable.name," = k)",sep="")
     plot(x.values,y.values,type="h",xlab="k",ylab=y.label,main=NULL,ylim=c(0,max.y)) 
     title("Probability Mass Function (PMF)")
     garbage <- dev.off();
     
     if (show.table)
     {
-      m <- matrix(nrow = number.rows, ncol = 2)
-      m[,1] <- t(x.values)
-      m[,2] <- t(y.values)
-      names(m) <- c("k", y.label)
+      m <- cbind(x.values, y.values)
+      colnames(m) <- c("k", y.label)
       print.matrix(m)
     }
   }
@@ -90,6 +88,6 @@ coda.variance <- function(jags.output)
 
 print.matrix <- function(m)
 {
-  write.table(format(m, justify="right"),
+  write.table(m,
               row.names=F, col.names=T, quote=F)
 }

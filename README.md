@@ -60,3 +60,24 @@ coda.pmf(dice.samples)
 # Same for CDF
 coda.cdf(dice.samples)
 ```
+
+As an additional utility, you can also approximate the expectation and variance of random variables sampled by JAGS (not necessarily discrete in this case) using:
+
+```r
+require(rjags)
+require(coda.discrete.utils)
+
+# This reads in the model you wrote in the file dice-model.bugs.
+dice.model <- jags.model('dice-model.bugs')
+
+dice.samples <- 
+  jags.samples(dice.model,
+               c('D1', 'S'), 
+               1000000) # The number of times we want to repeat this experiment
+               
+# This outputs the expectations
+coda.expectation(dice.samples) 
+
+# This outputs the variances
+coda.variance(dice.samples)
+```

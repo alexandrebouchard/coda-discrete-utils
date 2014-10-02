@@ -1,9 +1,9 @@
-#' Plot an approximate PMF (probability mass function) from the output of rjags on
-#' a discrete model.
+#' Plot an approximate PMF (probability mass function) from an mcmc.list coming
+#' from a discrete model.
 #' 
-#' @param jags.output The output of jags.sample.
-coda.pmf <- function(jags.output) {
-  
+#' @param jags.output An mcmc.list coming from a discrete model.
+coda.pmf <- function(jags.output) 
+{ 
   for (variable.name in names(jags.output)) 
   {
     coda.output <- as.mcmc.list(jags.output[[variable.name]])
@@ -22,12 +22,12 @@ coda.pmf <- function(jags.output) {
   }
 }
 
-#' Plot an approximate CDF (cumulative distribution function) from the output of rjags on
-#' a discrete model.
+#' Plot an approximate CDF (cumulative distribution function) from an mcmc.list coming
+#' from a discrete model.
 #' 
-#' @param jags.output The output of jags.sample.
-coda.cdf <- function(jags.output) {
-  
+#' @param jags.output An mcmc.list coming from a discrete model.
+coda.cdf <- function(jags.output) 
+{  
   for (variable.name in names(jags.output)) 
   {
     coda.output <- as.mcmc.list(jags.output[[variable.name]])
@@ -41,5 +41,37 @@ coda.cdf <- function(jags.output) {
     title("Cumulative Distribution Function (CDF)")
     garbage <- dev.off();
   }
+}
+
+#' Output the expectation of all the variables in an mcmc.list 
+#' 
+#' @param jags.output An mcmc.list
+coda.expectation <- function(jags.output) 
+{  
+  result <- c()
+  for (variable.name in names(jags.output)) 
+  {
+    coda.output <- as.mcmc.list(jags.output[[variable.name]])
+    my.matrix <- as.matrix(coda.output)
+    variable.data <- my.matrix[,1]
+    result[[variable.name]] <- mean(variable.data)
+  }
+  return(result)
+}
+
+#' Output the variance of all the variables in an mcmc.list 
+#' 
+#' @param jags.output An mcmc.list
+coda.variance <- function(jags.output) 
+{  
+  result <- c()
+  for (variable.name in names(jags.output)) 
+  {
+    coda.output <- as.mcmc.list(jags.output[[variable.name]])
+    my.matrix <- as.matrix(coda.output)
+    variable.data <- my.matrix[,1]
+    result[[variable.name]] <- var(variable.data)
+  }
+  return(result)
 }
 

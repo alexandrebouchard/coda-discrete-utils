@@ -1,3 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 
 importFrom(descr,freq)
+importFrom(ggplot2, ggplot)
+importFrom(ggplot2, ggsave)

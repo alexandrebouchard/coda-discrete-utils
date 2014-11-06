@@ -116,6 +116,6 @@ samples <-
                c('X', 'Y'), 
                10000) 
                
-coda.density2d(samples, "X", "Y")
+coda.density2d(samples, "X", "Y", print.marginals = TRUE)
 coda.density(samples)
 ```

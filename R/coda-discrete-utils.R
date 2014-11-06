@@ -116,7 +116,7 @@ coda.density2d <- function(jags.output, first.variable, second.variable)
   p <- ggplot(my.frame, aes(x,y)) + 
     stat_density2d(geom="tile", aes(fill = ..density..), contour = FALSE) + 
     labs(x = first.variable, y = second.variable)
-  ggsave(filename = paste(first.variable,"-",second.variable, "-joint-density.pdf",sep=""))
+  ggsave(filename = paste(first.variable,"-",second.variable, "-joint-density.jpg",sep=""))
 }
 
 

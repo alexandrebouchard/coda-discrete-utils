@@ -98,6 +98,28 @@ coda.variance <- function(jags.output)
   return(result)
 }
 
+#' Plot an approximate density from the output of jags.samples
+#' ran a continuous model.
+#' 
+#' @param jags.output The output of jags.samples ran on a discrete model
+coda.density <- function(jags.output)
+{
+  for (variable.name in names(jags.output)) 
+  {
+    coda.output <- as.mcmc.list(jags.output[[variable.name]])
+    my.matrix <- as.matrix(coda.output)
+    my.frame <- data.frame(x= my.matrix1[,1])
+    
+    p <- ggplot(my.frame, aes(x)) + 
+      geom_density(adjust=5, size=2) +
+      labs(x = "x", y = "Approximation of f(x)") +
+      ggtitle(paste("Density of ", variable.name, sep=""))
+    ggsave(filename = paste(variable.name , "-density.pdf",sep=""))
+  }
+  
+}
+
+
 #' Output an estimate of the joint density of the two specified variables.
 #' 
 #' @param jags.output The output of jags.samples.

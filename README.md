@@ -88,3 +88,34 @@ coda.expectation(dice.samples)
 # This outputs the variances
 coda.variance(dice.samples)
 ```
+
+The package also contains similar utilities for continuous random variables (redundant from other packages such as ggmcmc, but added so that all the functions behave similarly, i.e. create separate files for each variable). 
+
+Suppose you have the following trivial bugs model:
+
+```r
+model {
+  
+  X ~ dnorm(0, 1)
+  Y ~ dnorm(0, 2)
+
+}
+```
+
+you can now use the following to print density and joint densities estimates:
+
+```r
+require(rjags)
+require(coda.discrete.utils)
+
+model <- jags.model(
+  'model.bugs')
+
+samples <- 
+  jags.samples(model,
+               c('X', 'Y'), 
+               10000) 
+               
+coda.density2d(samples, "X", "Y")
+coda.density(samples)
+```

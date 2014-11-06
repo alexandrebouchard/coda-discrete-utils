@@ -108,7 +108,7 @@ coda.density <- function(jags.output)
   {
     coda.output <- as.mcmc.list(jags.output[[variable.name]])
     my.matrix <- as.matrix(coda.output)
-    my.frame <- data.frame(x= my.matrix1[,1])
+    my.frame <- data.frame(x= my.matrix[,1])
     
     p <- ggplot(my.frame, aes(x)) + 
       geom_density(adjust=5, size=2) +

@@ -111,7 +111,7 @@ coda.density <- function(jags.output)
     my.frame <- data.frame(x= my.matrix[,1])
     
     p <- ggplot(my.frame, aes(x)) + 
-      geom_density(adjust=5, size=2) +
+      geom_density(adjust=1, size=2) +
       labs(x = "x", y = "Approximation of f(x)") +
       ggtitle(paste("Density of ", variable.name, sep=""))
     ggsave(p, filename = paste(variable.name , "-density.pdf",sep=""))
@@ -148,12 +148,12 @@ coda.density2d <- function(jags.output, first.variable, second.variable, print.m
     
     #marginal density of x - plot on top
     plot_top <- ggplot(my.frame, aes(x)) +
-      geom_density(adjust=5)
+      geom_density(adjust=1)
     
     #marginal density of y - plot on the right
     plot_right <- ggplot(my.frame, aes(y)) + 
       coord_flip() +
-      geom_density(adjust=5)
+      geom_density(adjust=1)
     
     empty <- ggplot()+geom_point(aes(1,1), colour="white") +
       theme(                              
